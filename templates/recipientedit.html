@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% block body %}
+	
+	<header class="jumbotron" style="background-image: url('{{ url_for('static', filename='img/back5.png') }}');">
+      <div class="container">
+          <h1 class="text-center">Recipient Edit Page</h1>
+          <p class="text-center">Manage Your Own Posts And Change Them</p>
+      </div>
+  </header>
+  <div class="container">
+    <div class="row">
+        <ol class="col-12 breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/dashboard">Admin</a></li>
+            <li class="breadcrumb-item active">Recipient Edit</li>
+        </ol>
+    </div>
+  </div>
+
+
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          	<h1>Add/Edit Posts</h1>
+
+	       	<form name="sentMessage" id="recipientForm" action="/recipientedit/{{recipient.sno}}" method="post" >
+                        
+	            <div class="control-group">
+	              <div class="form-group floating-label-form-group controls">
+	                <label>Name</label>
+	                <input type="text" class="form-control" placeholder="Name" id="name" name="name" required value="{{recipient.name}}">
+	              </div>
+	            </div>
+
+	            <div class="control-group">
+	              <div class="form-group floating-label-form-group controls">
+	                <label>Gender</label>
+	                <select class="form-control" name="gender" id="gender">
+	                    <option>{{recipient.gender}}</option>
+	                    <option>Male</option>
+	                    <option>Female</option>
+	                    <option>Others</option>
+	                </select>
+	              </div>
+	            </div>
+
+	            <div class="control-group">
+	              <div class="form-group floating-label-form-group controls">
+	                <label>Age</label>
+	                <input type="number" min="18" max="70" class="form-control" placeholder="18+" id="age" name="age" required value="{{recipient.age}}">
+	              </div>
+	            </div>
+
+	            <div class="control-group">
+	              <div class="form-group floating-label-form-group controls">
+	                <label>Blood Group</label>
+	                <select class="form-control" name="bloodgroup" id="bloodgroup">
+	                    <option>{{recipient.bloodgroup}}</option>
+	                    <option>A+</option>
+	                    <option>A-</option>
+	                    <option>B+</option>
+	                    <option>B-</option>
+	                    <option>O+</option>
+	                    <option>O-</option>
+	                    <option>AB+</option>
+	                    <option>AB-</option>
+	                </select>
+	              </div>
+	            </div>
+
+	            <div class="control-group">
+	              <div class="form-group col-xs-12 floating-label-form-group controls">
+	                <label>Phone Number</label>
+	                <input type="text" pattern="\d{10}" class="form-control" placeholder="Phone Number" name="phone" id="phone" required value="{{recipient.phone_num}}">
+	              </div>
+	            </div>
+
+	            <div class="control-group">
+	              <div class="form-group floating-label-form-group controls">
+	                <label>Email Address</label>
+	                <input type="email" class="form-control" placeholder="Email Address" name="email" id="email" required value="{{recipient.email}}">
+	              </div>
+	            </div>
+
+	            <div class="control-group">
+	              <div class="form-group floating-label-form-group controls">
+	                <label>Address</label>
+	                <textarea rows="5" class="form-control" placeholder="Address" name="address" id="address" required >{{recipient.address}}</textarea>
+	              </div>
+	            </div>
+
+	            <div id="success"></div>
+	            <div class="offset-md-2 col-md-10" align="right">
+	            	<a role="button" class="btn btn-warning" href="/dashboard">Back</a>
+	                <button type="reset" class="btn btn-danger">Reset</button>
+	                <button type="submit" class="btn btn-primary" id="sendMessageButton">Save</button>
+	            </div>
+	        </form>
+
+        </div>
+      </div>
+    </div>
+
+
+  {% endblock %}

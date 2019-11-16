@@ -1,0 +1,181 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <header class="jumbotron" style="background-image: url('{{ url_for('static', filename='img/back5.png') }}');">
+        <div class="container">
+            <h1 class="text-center">Recipient's Details</h1>
+            <p class="text-center">"Someone's blood saved my life and made my Mom smile."</p>
+        </div>
+        <div align="center">
+            <a id="recipientbox" class=" btn btn-success" role="button"><strong>Add Your Details</strong></a>
+        </div>
+    </header>
+
+    <div id="recipientboxModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header" style="background-image: url('{{ url_for('static', filename='img/back5.png') }}');">
+                    <img src="{{ url_for('static', filename='img/bdlogon.png') }}" height="55" width="60" class="mr-2">
+                    <h2 class="modal-title">Recipient's Details</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <form name="sentMessage" id="donorForm" action="/recipient" method="post" >
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-2 col-form-label">Name</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" Required>
+                            </div>                        
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="gender" class="col-md-2 col-form-label">Gender</label>
+                            <div class="col-md-10">
+                                <select class="form-control" name="gender" id="gender">
+                                    <option value="">-- Gender --</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="age" class="col-md-2 col-form-label">Age</label>
+                            <div class="col-md-10">
+                                <input type="number" min="18" max="70" class="form-control" id="age" name="age" placeholder="Age : 18+" Required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="bloodgroup" class="col-md-2 col-form-label">Blood Group</label>
+                            <div class="col-md-10">
+                                <select class="form-control" name="bloodgroup" id="bloodgroup">
+                                    <option value="">-- Select Blood Group --</option>
+                                    <option>A+</option>
+                                    <option>A-</option>
+                                    <option>B+</option>
+                                    <option>B-</option>
+                                    <option>O+</option>
+                                    <option>O-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                </select>
+                            </div>
+                        </div>                    
+
+                        <div class="form-group row">
+                            <label for="phone" class="col-12 col-md-2 col-form-label">Phone No.</label>
+                            <div class="col-md-10">
+                                <input type="text" pattern="\d{10}" class="form-control" id="phone" name="phone" placeholder="Phone Number" Required>
+                            </div>                         
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-2 col-form-label">Email</label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" Required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="address" class="col-md-2 col-form-label">Address</label>
+                            <div class="col-md-10">
+                                <textarea class="form-control" id="address" name="address" rows="12" Required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="offset-md-2 col-md-10" align="right">
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>                            
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <ol class="col-12 breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">Recipient</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        <span>{{ message }}</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
+    <div class="container">
+    {% for recipient in recipients %}    
+        <div class="row row-content">
+            <div class="col-12">
+                <h3 class="text-danger">{{recipient.name}}</h3>
+                <blockquote class="blockquote-footer">{{recipient.date}}</blockquote>
+            </div>
+            <div class="col-8 col-sm-7 offset-sm-1">
+                <table cellpadding="5">
+                    <tr>
+                        <td><b>Gender</b></td>
+                        <td>:</td>
+                        <td>{{recipient.gender}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Age</b></td>
+                        <td>:</td>
+                        <td>{{recipient.age}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Contact No.</b></td>
+                        <td>:</td>
+                        <td>{{recipient.phone_num}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Blood Group</b></td>
+                        <td>:</td>
+                        <td>{{recipient.bloodgroup}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td>:</td>
+                        <td>{{recipient.email}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Address</b></td>
+                        <td>:</td>
+                        <td>{{recipient.address}}</td>
+                    </tr>                   
+                </table>
+            </div>
+
+            {% set fname = 'img/' + recipient.bloodgroup + '.png' %}
+            <div class="col-4 col-sm-4">
+                <img src="{{ url_for('static', filename=fname) }}"  width="100" alt="Blood Group">
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <hr>
+
+
+{% endblock %}

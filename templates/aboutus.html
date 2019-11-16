@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <header class="jumbotron" style="background-image: url('{{ url_for('static', filename='img/back5.png') }}');">
+    <div class="container">
+        <h1 class="text-center">About Us</h1>
+        <p class="text-center">“Our motive is to create a solution that can help millions of people.”</p>
+    </div>
+  </header>
+    
+    <div class="container">
+        <div class="row">
+            <ol class="col-12 breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">About Us</li>
+            </ol>
+        </div>
+
+        <div class="container">
+            <div class="row row-content align-items-center">
+                <div class="col-12 col-sm-6">
+                    <h2>Overview</h2>
+                    <p class="text-justify">Blood donation is a voluntary procedure that can help save the lives of others. There are several types of blood donation, which help meet different medical needs.</p>
+                    <p class="text-justify">The goals of World Blood Donor Day are: To raise awareness that individuals can save lives and improve the health of others by donating blood. To encourage people to donate blood voluntarily without compensation. To support the operation of safe and reliable blood services.</p>
+                </div>
+            
+                <div class="col-sm">
+                    <div class="card">
+                        <h3 class="card-header bg-danger text-white">About This Page</h3>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-6">Started</dt>
+                                <dd class="col-6">25 Oct. 2019</dd>
+
+                                <dt class="col-6">Project Name</dt>
+                                <dd class="col-6">{{params['project_name']}}</dd>
+
+                                <dt class="col-6">Admin</dt>
+                                <dd class="col-6">Krushna Chandra Rout</dd>
+
+                                <dt class="col-6">Place</dt>
+                                <dd class="col-6">Pondicherry Univerity</dd>
+
+                                <dt class="col-6">Occupation</dt>
+                                <dd class="col-6">Final Year Student of MCA</dd>                 
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card card-body bg-light">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">"If you’re a blood donor, you’re a hero to someone, somewhere, who received your gracious gift of life."</p>
+                            <footer class="blockquote-footer">K C Rout,
+                                <cite title="Sources Title">The Wit and Wisdom of K C Rout, 2019
+                                </cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+          <div class="row row-content">
+            <div class="col-12 col col-sm-3 col-md-3">
+               <img src="{{ url_for('static', filename='img/abt1.jpg') }}" class="d-flex mr-3 img-thumbnail align-self-center">
+            </div>
+            <div class="col-12 col col-sm-3 col-md-3">
+               <img src="{{ url_for('static', filename='img/abt2.png') }}" class="d-flex mr-3 img-thumbnail align-self-center">
+            </div>
+            <div class="col-12 col col-sm-3 col-md-3">
+               <img src="{{ url_for('static', filename='img/abt3.jpg') }}" class="d-flex mr-3 img-thumbnail align-self-center">
+            </div>
+            <div class="col-12 col col-sm-3 col-md-3">
+               <img src="{{ url_for('static', filename='img/abt4.jpg') }}" class="d-flex mr-3 img-thumbnail align-self-center">
+            </div>
+          </div>  
+        </div>
+
+        <div class="container">
+            <div class="row row-content">
+                <h3>Purpose Of Blood Donation</h3>
+                <p class="text-justify">Blood cannot be manufactured in factories; it can only come from generous donors. To cater to this demand, BloodConnect was launched on 1st April, 2010 (as a project under NSS IIT Delhi) with an unparalleled objective of solving the problem of blood shortage in India.</p>
+                <p class="text-justify">According to WHO data, India faces a shortage of 3 million blood units. This shortage can easily be eliminated if only an additional 2% of India's youth donates blood. To make this possible, BloodConnect acts as a channel connecting voluntary blood donors with those who need blood. It is a youth-run organization and provides free help and specially works to target the poor and the needy.</p>
+            </div>
+            <div class="row row-content">
+                <h3>Objectives</h3>
+                <ul class="text-justify">
+                  <li>To create awareness and motivate people for Blood Donation. Starting from Colleges, we are now moving towards the Corporate Sector, Residential Areas.</li>
+                  <li>To help anyone, in case of any requirement for blood.</li>
+                  <li>To end the concept of replacement donation by ensuring continuous supply of blood through Voluntary Blood Donation in Government blood banks.</li>
+                  <li>To continuously organize Blood Donation Camps with all the 18 Government Blood Banks in Delhi and to have collaborations with them so that they can help us in case of any requirement for blood.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

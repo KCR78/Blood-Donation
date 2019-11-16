@@ -1,0 +1,24 @@
+{
+  "params":
+  {
+    "local_server":"True",
+    "local_uri": "mysql://root:@localhost/blood_donation",
+    "prod_uri":"mysql://root:@localhost/blood_donation",
+    "fb_url":"https://facebook.com/",
+    "tw_url":"https://twitter.com/",
+    "gh_url": "https://github.com/",
+    "gl_url": "https://plus.google.com",
+    "li_url": "https://in.linkedin.com",
+    "yt_url": "https://youtube.com/",
+    "no_of_posts": "5",
+    "project_name": "BLOOD DONATION",
+    "tag_line": "-- Donate Blood, Save Life, Find The Hero In You --",
+    "gmail-user":"surjitsinghkaur404@gmail.com",
+    "gmail-password":"heartbeats404",
+    "admin_user":"kcr",
+    "admin_password": "kcpass",
+    "admin-mail": "krushnachandrarout15@gmail.com",
+    "admin-mobile": "7504880671"
+
+  }
+}
